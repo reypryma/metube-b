@@ -2,7 +2,7 @@
   "name": "metube",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -16,7 +16,7 @@
     "morgan": "^1.10.0"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node index.js --delay 1"
+    "start": "nodemon --exec babel-node init.js --delay 1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
