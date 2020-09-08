@@ -5,10 +5,11 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser"
 import bodyParser from "body-parser"
 
+import {userRouter} from "./router";
+
 // const express = require('express')
 const app = express()
 
-const PORT = 4000
 const betweenParam = (req, res, next) => {
     console.log('between')
     next();
@@ -23,7 +24,7 @@ app.use(helmet())
 app.use(morgan('dev'))
 
 // noinspection JSCheckFunctionSignatures
-app.get('/', betweenParam,(req,res) =>
+app.get('/',(req,res) =>
     res.send('Im refreshing again')
 )
 
@@ -31,7 +32,6 @@ app.get('/profile', function (req,res) {
     res.send('My Profile')
 })
 
-app.listen(PORT, betweenParam, err => {
-    if (err) console.log("Error in server setup")
-    console.log(`Server listening http://localhost:${PORT}`);
-})
+app.use('/user', userRouter)
+
+export default app;
