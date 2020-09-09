@@ -1,5 +1,5 @@
 export const home = (req, res) => {
- res.send("Home") ;
+ res.render("home") ;
 };
 
 export const videoSearch = (req, res) => {

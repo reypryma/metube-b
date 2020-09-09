@@ -9,9 +9,11 @@ import {userRouter} from "./router/userRouter";
 import videoRouter from "./router/videoRouter";
 import globalRouter from "./router/globalRouter";
 import routes from "./routes";
-
 // const express = require('express')
-const app = express()
+const app = express();
+//extensen of layout inside view
+app.set("view engine", "pug");
+
 // noinspection JSCheckFunctionSignatures
 app.use(cookieParser())
 app.use(bodyParser.json())         // check what content that send
