@@ -5,16 +5,13 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser"
 import bodyParser from "body-parser"
 
-import {userRouter} from "./router";
+import {userRouter} from "./router/userRouter";
+import videoRouter from "./router/videoRouter";
+import globalRouter from "./router/globalRouter";
+import routes from "./routes";
 
 // const express = require('express')
 const app = express()
-
-const betweenParam = (req, res, next) => {
-    console.log('between')
-    next();
-}
-
 // noinspection JSCheckFunctionSignatures
 //app.use(betweenParam);
 app.use(cookieParser())
@@ -24,14 +21,8 @@ app.use(helmet())
 app.use(morgan('dev'))
 
 // noinspection JSCheckFunctionSignatures
-app.get('/',(req,res) =>
-    res.send('Im refreshing again')
-)
-
-app.get('/profile', function (req,res) {
-    res.send('My Profile')
-})
-
-app.use('/user', userRouter)
+app.use(routes.home, globalRouter)
+app.use(routes.users, userRouter)
+app.use(routes.videos, videoRouter)
 
 export default app;
