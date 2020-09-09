@@ -13,7 +13,6 @@ import routes from "./routes";
 // const express = require('express')
 const app = express()
 // noinspection JSCheckFunctionSignatures
-//app.use(betweenParam);
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended : true}))
