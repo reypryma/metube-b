@@ -14,7 +14,7 @@ import routes from "./routes";
 const app = express()
 // noinspection JSCheckFunctionSignatures
 app.use(cookieParser())
-app.use(bodyParser.json())
+app.use(bodyParser.json())         // check what content that send
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(helmet())
 app.use(morgan('dev'))
