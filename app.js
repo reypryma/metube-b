@@ -11,7 +11,7 @@ import globalRouter from "./router/globalRouter";
 import routes from "./routes";
 // const express = require('express')
 const app = express();
-//extensen of layout inside view
+//extensen pug of layout inside view
 app.set("view engine", "pug");
 
 // noinspection JSCheckFunctionSignatures

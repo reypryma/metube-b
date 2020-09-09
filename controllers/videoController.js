@@ -3,10 +3,10 @@ export const home = (req, res) => {
 };
 
 export const videoSearch = (req, res) => {
-    res.send("Search") ;
+    res.render("search") ;
 };
-export const videos = (req, res) => res.send("Video");
-export const videoDetail = (req, res) => res.send("Video Detail");
-export const upload = (req, res) => res.send("Upload Video");
-export const editVideo = (req, res) => res.send("Edit Video");
-export const deleteVideo = (req, res) => res.send("Delete Video");
+export const videos = (req, res) => res.render("Video");
+export const videoDetail = (req, res) => res.render("videoDetail");
+export const upload = (req, res) => res.render("uploadVideo");
+export const editVideo = (req, res) => res.render("editVideo");
+export const deleteVideo = (req, res) => res.render("deleteVideo");
