@@ -1,0 +1,12 @@
+extends layouts/main
+
+block content
+    h3 Sign Up
+    .form__container
+        form(action="/join", method="post")
+            input(type="text", name="name", placeholder="Your Name")
+            input(type="email", name="email", placeholder="Email")
+            input(type="password", name="password", placeholder="Password")
+            input(type="password", name="passwordVerify", placeholder="Verify Password")
+            input(type="submit", value="sign up")
+    include parts/socialLogin
