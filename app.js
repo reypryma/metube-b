@@ -22,6 +22,7 @@ app.use(bodyParser.json())         // check what content that send
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(morgan('dev'))
 
+//Middle get data from local var then do next to routing
 app.use(localMiddleWare);
 
 // noinspection JSCheckFunctionSignatures
