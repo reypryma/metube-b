@@ -27,6 +27,7 @@ app.use(localMiddleWare);
 
 // noinspection JSCheckFunctionSignatures
 app.use(routes.home, globalRouter)
+// users/your-user-router
 app.use(routes.users, userRouter)
 app.use(routes.videos, videoRouter)
 
