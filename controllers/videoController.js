@@ -1,5 +1,8 @@
+import {videoList} from "./db";
+
+
 export const home = (req, res) => {
-    res.render("home", {pageTitle: 'Home'});
+    res.render("home", {pageTitle: 'Home', videoList});
 };
 
 export const videoSearch = (req, res) => {
@@ -8,14 +11,14 @@ export const videoSearch = (req, res) => {
         query: {term: searchingBy}
     } = req
     //with babel/es6, searchingBy have value of searchingBy
-    res.render("search", {pageTitle : 'Search', searchingBy}) ;
+    res.render("search", {pageTitle : 'Search', searchingBy, videoList}) ;
     //res.render("search", {pageTitle: 'Search'});
     //All in all equivalent of
     //const searchingBy = req.query.term - render(..., searchingBy : searchingBy
 };
-export const videos = (req, res) => {
+/*export const videos = (req, res) => {
     res.render("Video", {pageTitle: 'Video'})
-};
+};*/
 
 export const videoDetail = (req, res) => {
     res.render("videoDetail", {pageTitle: 'Video Detail'})
