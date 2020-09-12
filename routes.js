@@ -44,9 +44,9 @@ const routes = {
         if(!id)
             return VIDEO_DETAIL
         else
-            return `/videos/${id}`
+            return `${VIDEOS}/${id}`
     },
-    editVide: EDIT_VIDEO,
+    editVideo: EDIT_VIDEO,
     deleteVideo: DELETE_VIDEO
 }
 
