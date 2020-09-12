@@ -1,4 +1,5 @@
 import {videoList} from "./db";
+import routes from "../routes";
 
 
 export const home = (req, res) => {
@@ -11,7 +12,7 @@ export const videoSearch = (req, res) => {
         query: {term: searchingBy}
     } = req
     //with babel/es6, searchingBy have value of searchingBy
-    res.render("search", {pageTitle : 'Search', searchingBy, videoList}) ;
+    res.render("search", {pageTitle: 'Search', searchingBy, videoList});
     //res.render("search", {pageTitle: 'Search'});
     //All in all equivalent of
     //const searchingBy = req.query.term - render(..., searchingBy : searchingBy
@@ -24,8 +25,21 @@ export const videoDetail = (req, res) => {
     res.render("videoDetail", {pageTitle: 'Video Detail'})
 };
 
-export const upload = (req, res) => {
+export const getUpload = (req, res) => {
     res.render("uploadVideo", {pageTitle: 'Upload'})
+};
+export const postUpload = (req, res) => {
+    //res.render("uploadVideo", {pageTitle: 'Upload'})
+    const {
+        body: {
+            file,
+            videoTitle,
+            videoDescription
+        }
+    } = req
+    //TODO Upload video and save
+    res.redirect(routes.videoDetail(323423))
+
 };
 
 export const editVideo = (req, res) => {
