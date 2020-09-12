@@ -1,6 +1,6 @@
 import app from "./app";
 import "./db";
-
+//⬆️Import all without declaring
 
 const PORT = 4000
 
