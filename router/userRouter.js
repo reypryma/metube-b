@@ -7,5 +7,6 @@ export const userRouter = express.Router()
 //for now so that users/edit-profile can be rendered, I change the position
 userRouter.get(routes.editProfile, editProfile)
 userRouter.get(routes.changePassword, changePassword)
-userRouter.get(routes.userDetail, userDetail)
+// noinspection JSCheckFunctionSignatures
+userRouter.get(routes.userDetail(), userDetail)
 

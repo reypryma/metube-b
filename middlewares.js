@@ -8,6 +8,5 @@ export const localMiddleWare = (req, res, next) => {
   isAuthenticated: true,
   id: 1,
  };
-
  next();
 };

@@ -9,7 +9,7 @@ const SEARCH = "/search"
 //Users
 const USERS = "/users"
 const EDIT_PROFILE = "/edit-profile"
-const USER_DETAIL = "/:id/" //they think the value will change
+const USER_DETAIL = "/:id" //they think the value will change // UPDATE: beware /:id/ lead to error render!!
 /// ⬆️Will be /users/1 etc
 const CHANGE_PASSWORD = "/change-password"
 
@@ -28,12 +28,32 @@ const routes = {
     search: SEARCH,
 
     users: USERS,
-    userDetail: USER_DETAIL,
+    userDetail:
+        // (id) => {
+        //     //id ? `${USERS}/${id}` : USER_DETAIL;
+        //     if(id) {
+        //         return `/users/${id}`
+        //     }else {
+        //         return USER_DETAIL;
+        //     }
+        // },
+        (id) => {
+            if(!id){
+                return USER_DETAIL
+            }else{
+                return `/users/${id}`
+            }
+        },
     editProfile: EDIT_PROFILE,
     changePassword: CHANGE_PASSWORD,
     videos: VIDEOS,
     upload: UPLOAD,
-    videoDetail: VIDEO_DETAIL,
+    videoDetail: id => {
+        if(!id)
+            return VIDEO_DETAIL
+        else
+            return `/videos/${id}`
+    },
     editVide: EDIT_VIDEO,
     deleteVideo: DELETE_VIDEO
 }
