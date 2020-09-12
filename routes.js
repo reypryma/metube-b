@@ -29,19 +29,11 @@ const routes = {
 
     users: USERS,
     userDetail:
-        // (id) => {
-        //     //id ? `${USERS}/${id}` : USER_DETAIL;
-        //     if(id) {
-        //         return `/users/${id}`
-        //     }else {
-        //         return USER_DETAIL;
-        //     }
-        // },
         (id) => {
             if(!id){
                 return USER_DETAIL
             }else{
-                return `/users/${id}`
+                return `${USERS}/${id}`
             }
         },
     editProfile: EDIT_PROFILE,
