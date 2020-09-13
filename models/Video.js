@@ -1,29 +1,35 @@
 import mongoose from "mongoose";
 
-//models is a schema its the shape
-
-const videoSchema = new mongoose.Schema({
-    fileUrl:{
+const VideoSchema = new mongoose.Schema({
+    fileUrl: {
         type: String,
         required: "File URL is required"
     },
-    title:{
+    title: {
         type: String,
-        required: "Title is required"
+        required: "Tilte is required"
     },
     description: String,
-    views:{
+    views: {
         type: Number,
         default: 0
     },
-    createdAt:{
+    createdAt: {
         type: Date,
         default: Date.now
+    },
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Comment"
+        }
+    ],
+    creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
 });
 
-//the name is Video with schema is videoSchema
-const model = mongoose.model("Video", videoSchema)
+//The NAME of model is Video that have schema videoSchema
+const model = mongoose.model("Video", VideoSchema);
 export default model;
-//Its connected but they dont understand there is model
-//import model to init
