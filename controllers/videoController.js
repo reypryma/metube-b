@@ -1,18 +1,26 @@
-import {videoList} from "../db";
 import routes from "../routes";
+import Video from "../models/Video"
 
-
-export const home = (req, res) => {
-    res.render("home", {pageTitle: 'Home', videoList});
+//async will finish first statement before go next, example, downloading video, javascript will wait till
+//video fully downloaded first
+export const home = async (req, res) => {
+    try {
+        const videos = await Video.find({})
+        res.render("home", {pageTitle: 'Home', videos});
+    } catch (e) {
+        console.log(e)
+        res.redirect("home", {pageTitle: "Home", videos: []})
+    }
 };
 
-export const videoSearch = (req, res) => {
+export const videoSearch = async (req, res) => {
     const {
         //same as request.query.term, it has new name searchingBy and its equal to query term
         query: {term: searchingBy}
     } = req
+    const videos = await Video.find({})
     //with babel/es6, searchingBy have value of searchingBy
-    res.render("search", {pageTitle: 'Search', searchingBy, videoList});
+    res.render("search", {pageTitle: 'Search', searchingBy, videos});
     //res.render("search", {pageTitle: 'Search'});
     //All in all equivalent of
     //const searchingBy = req.query.term - render(..., searchingBy : searchingBy
@@ -28,17 +36,29 @@ export const videoDetail = (req, res) => {
 export const getUpload = (req, res) => {
     res.render("uploadVideo", {pageTitle: 'Upload'})
 };
-export const postUpload = (req, res) => {
+export const postUpload = async (req, res) => {
     //res.render("uploadVideo", {pageTitle: 'Upload'})
     const {
-        body: {
-            file,
+        body: {title, description},
+        file: {path}
+            /*: {
+            videoFile,
             videoTitle,
             videoDescription
-        }
+        }*/
     } = req
+    /// we try to access on url way
+    const newVideo = await Video.create({
+        fileUrl : path,
+        title,
+        description,
+    })
+
     //TODO Upload video and save
-    res.redirect(routes.videoDetail(323423))
+    console.log(newVideo)
+    res.redirect(routes.videoDetail(newVideo.id))
+
+    //res.render("upload", {pageTitle: "upload"})
 
 };
 

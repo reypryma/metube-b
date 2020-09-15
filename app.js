@@ -12,12 +12,12 @@ import routes from "./routes";
 import {localMiddleWare} from "./middlewares";
 // const express = require('express')
 const app = express();
-//extensen pug of layout inside view
-app.set("view engine", "pug");
 
-// noinspection JSCheckFunctionSignatures
+
 app.use(helmet())
+app.set("view engine", "pug"); //extensen pug of layout inside view
 app.use(cookieParser())
+app.use("/uploads", express.static("uploads"))
 app.use(bodyParser.json())         // check what content that send
 app.use(bodyParser.urlencoded({extended : true}))
 app.use(morgan('dev'))

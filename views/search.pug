@@ -5,7 +5,7 @@ block content
     .search__header
         h3 Searching of #{searchingBy}
     .search__video
-        each item in videoList
+        each item in videos
             +videoBlock({
                 title: item.title,
                 views: item.views,
