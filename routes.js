@@ -46,8 +46,18 @@ const routes = {
         else
             return `${VIDEOS}/${id}`
     },
-    editVideo: EDIT_VIDEO,
-    deleteVideo: DELETE_VIDEO
+    editVideo: (id)=>{
+        if(id){
+            return `${VIDEOS}/${id}/edit`
+        }else{
+            return EDIT_VIDEO
+        }
+    },
+    deleteVideo: (id)=>{
+        if (id){
+
+        }
+    }
 }
 
 export default routes;
