@@ -8,9 +8,9 @@ const SEARCH = "/search"
 
 //Users
 const USERS = "/users"
-const USER_DETAIL = "/:id/" //they think the value will change
-/// ⬆️Will be /users/1 etc
 const EDIT_PROFILE = "/edit-profile"
+const USER_DETAIL = "/:id" //they think the value will change // UPDATE: beware /:id/ lead to error render!!
+/// ⬆️Will be /users/1 etc
 const CHANGE_PASSWORD = "/change-password"
 
 //Videos
@@ -28,14 +28,38 @@ const routes = {
     search: SEARCH,
 
     users: USERS,
-    userDetail: USER_DETAIL,
+    userDetail:
+        (id) => {
+            if(!id){
+                return USER_DETAIL
+            }else{
+                return `${USERS}/${id}`
+            }
+        },
     editProfile: EDIT_PROFILE,
     changePassword: CHANGE_PASSWORD,
     videos: VIDEOS,
     upload: UPLOAD,
-    videoDetail: VIDEO_DETAIL,
-    editVide: EDIT_VIDEO,
-    deleteVideo: DELETE_VIDEO
+    videoDetail: id => {
+        if(!id)
+            return VIDEO_DETAIL
+        else
+            return `${VIDEOS}/${id}`
+    },
+    editVideo: (id)=>{
+        if(id){
+            return `${VIDEOS}/${id}/edit`
+        }else{
+            return EDIT_VIDEO
+        }
+    },
+    deleteVideo: (id)=>{
+        if (id){
+            return `${VIDEOS}/${id}/delete`
+        }else {
+            return DELETE_VIDEO
+        }
+    }
 }
 
 export default routes;
