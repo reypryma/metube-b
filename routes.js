@@ -55,7 +55,9 @@ const routes = {
     },
     deleteVideo: (id)=>{
         if (id){
-
+            return `${VIDEOS}/${id}/delete`
+        }else {
+            return DELETE_VIDEO
         }
     }
 }
