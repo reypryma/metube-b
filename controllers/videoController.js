@@ -5,7 +5,7 @@ import Video from "../models/Video"
 //video fully downloaded first
 export const home = async (req, res) => {
     try {
-        const videos = await Video.find({})
+        const videos = await Video.find({}).sort({_id : -1}) //sort to newest first
         res.render("home", {pageTitle: 'Home', videos});
     } catch (e) {
         console.log(e)
