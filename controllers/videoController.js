@@ -18,7 +18,12 @@ export const videoSearch = async (req, res) => {
         //same as request.query.term, it has new name searchingBy and its equal to query term
         query: {term: searchingBy}
     } = req
-    const videos = await Video.find({})
+    let videos = []
+    try {
+        videos = await Video.find({title: {$regex: searchingBy, $options:"i"}})//insensitive
+    } catch (e) {
+        console.log(e)
+    }
     //with babel/es6, searchingBy have value of searchingBy
     res.render("search", {pageTitle: 'Search', searchingBy, videos});
     //res.render("search", {pageTitle: 'Search'});
